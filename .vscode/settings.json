@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "random": "cpp",
+        "limits": "cpp",
+        "lista.h": "c",
+        "stdio.h": "c"
+    }
+}

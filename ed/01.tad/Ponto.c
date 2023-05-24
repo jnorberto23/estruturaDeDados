@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <math.h>
 #include "Ponto.h"
 
@@ -45,8 +46,8 @@ void pto_atribui(Ponto *p, float x, float y)
 // calcula a distancia entre dois pontos
 float pto_distancia(Ponto *p1, Ponto *p2)
 {
-    float dx = p1->x - p2->x;
-    float dy = p1->y - p2->y;
+    float dx = (p1->x) - (p2->x);
+    float dy = (p1->y) - (p2->y);
 
-    return sqrt(dx * dx + dy * dy);
+    return sqrt((dx * dx) + (dy * dy));
 }
