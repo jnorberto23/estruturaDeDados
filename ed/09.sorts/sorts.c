@@ -3,35 +3,31 @@
 #include <math.h>
 #include "sorts.h"
 
-void PrintArray(int arr[], int len)
+void PrintArray(const int* arr[], int len)
 {
     for (int i = 0; i < len; i++)
     {
-        printf("%d ", arr[i]);
+        printf("%d ", *arr[i]);
     }
     printf("\n");
 }
 
-double bubbleSort(int v[], int len)
+int* bubbleSort(const int* v[], int len)
 {
-    int i, aux, keep = 0;
-    int end = len;
-    do
+    int i, j, aux;
+    for (i = 0; i < len - 1; i++)
     {
-        keep = 0;
-        for (i = 0; i < end; i++)
+        for (j = 0; j < len - i - 1; j++)
         {
-
-            if (v[i] > v[i + 1])
+            if (*v[j] > *v[j + 1])
             {
-                aux = v[i];
-                v[i] = v[i + 1];
-                v[i + 1] = aux;
-                keep = 1;
+                aux = *v[j];
+                *v[j] = *v[j + 1];
+                *v[j + 1] = aux;
             }
         }
-        len--;
-    } while (keep != 0);
+    }
+    return (int*)*v;
 }
 double insertionSort(int v[], int len)
 {
@@ -49,5 +45,25 @@ double insertionSort(int v[], int len)
         }
     }
 
+    return 0.0;
+}
+
+double selectionSort(int v[], int len)
+{
+    int aux = 0;
+    int end = len;
+
+    for (int i = 0; i < end; i++)
+    {
+        for (int j = 0; j < end; i++)
+        {
+            if (v[i] < v[j])
+            {
+                aux = v[i];
+                v[i] = v[j];
+                v[j] = aux;
+            }
+        }
+    }
     return 0.0;
 }

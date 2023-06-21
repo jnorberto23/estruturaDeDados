@@ -3,27 +3,30 @@
 #include "sorts.h"
 #include "sorts.c"
 
+const int* BASE_ARRAY[] = {9, 8, 7, 2, 1, 4, 5};
+#define LENGTH (sizeof(BASE_ARRAY) / sizeof(BASE_ARRAY[0]))
+
 int main(void)
 {
-    int bubbleSortArray[] = {1, 5, 7, 9, 2, 3, 0};
-    int length = sizeof(bubbleSortArray) / sizeof(bubbleSortArray[0]);
+    printf("Base Array: ");
+    PrintArray(BASE_ARRAY, LENGTH);
 
-    printf("Array before bubble sorting: ");
-    PrintArray(bubbleSortArray, length);
-
-    bubbleSort(bubbleSortArray, length);
-
-    printf("Array after bubble sorting: ");
-    PrintArray(bubbleSortArray, length);
-
-    int insertSortArray[] = {9, 8, 7, 2, 1, 4, 5};
-    int lengthInsertSort = sizeof(insertSortArray) / sizeof(insertSortArray[0]);
-
-    printf("Array before insertion sorting: \n");
-    PrintArray(insertSortArray, lengthInsertSort);
-    insertionSort(insertSortArray, lengthInsertSort);
-    printf("Array after insertion sorting: ");
-    PrintArray(insertSortArray, lengthInsertSort);
+    bubbleSortMethod();
 
     return 0;
+}
+
+int bubbleSortMethod(void)
+{
+    int* newArray = bubbleSort(BASE_ARRAY, LENGTH);
+    printf("Array after bubble sorting: ");
+    PrintArray((const int**)newArray, LENGTH);
+
+    return 0;
+}
+
+int insertionSortMethod()
+{
+    printf("Array after insertion sorting: ");
+    // PrintArray(BASE_ARRAY, LENGTH);
 }
