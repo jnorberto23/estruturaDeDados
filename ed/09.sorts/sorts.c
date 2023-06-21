@@ -15,7 +15,7 @@ void PrintArray(int arr[], int len)
 double bubbleSort(int v[], int len)
 {
     int i, aux, keep = 0;
-    int end = len - 1;
+    int end = len;
     do
     {
         keep = 0;
@@ -32,4 +32,22 @@ double bubbleSort(int v[], int len)
         }
         len--;
     } while (keep != 0);
+}
+double insertionSort(int v[], int len)
+{
+    int aux = 0;
+    int end = len;
+
+    for (int i = 0; i < end; i++)
+    {
+        aux = v[i];
+        for (int j = i; (j > 0) && (v[j] < v[j - 1]); j--)
+        {
+
+            v[j] = v[j - 1];
+            v[j - 1] = aux;
+        }
+    }
+
+    return 0.0;
 }
