@@ -91,3 +91,41 @@ int removeAresta(Grafo* gr, int orig, int dest, int eh_digrafo){
         removeAresta(gr,dest,orig,1);
     return 1;
 }
+
+
+void buscaProfundidade(Grafo *gr, int ini, int *visitado, int cont){
+    int i;
+    visitado[ini] = cont;
+    for(i=0; i<gr->grau[ini]; i++){
+        if(!visitado[gr->arestas[ini][i]])
+            buscaProfundidade(gr,gr->arestas[ini][i],visitado,cont+1);
+    }
+}
+
+void buscaLargura(Grafo *gr, int ini, int *visitado){
+    int i, vert, NV, cont = 1;
+    int *fila, IF = 0, FF = 0;
+    for(i=0; i<gr->nro_vertices; i++)
+        visitado[i] = 0;
+
+    NV = gr->nro_vertices;
+    fila = (int*) malloc(NV * sizeof(int));
+    FF++;
+    fila[FF] = ini;
+    visitado[ini] = cont;
+    while(IF != FF){
+        IF = (IF + 1) % NV;
+        vert = fila[IF];
+        cont++;
+        for(i=0; i<gr->grau[vert]; i++){
+            if(!visitado[gr->arestas[vert][i]]){
+                FF = (FF + 1) % NV;
+                fila[FF] = gr->arestas[vert][i];
+                visitado[gr->arestas[vert][i]] = cont;
+            }
+        }
+    }
+    free(fila);
+    for(i=0; i < gr->nro_vertices; i++)
+        printf("%d -> %d\n",i,visitado[i]);
+}
